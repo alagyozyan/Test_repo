@@ -1,0 +1,15 @@
+name: MyFirstWorkflow
+on:
+  push:
+    branches:
+      master
+      
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    
+    steps:
+    
+    - name: Checkout
+      uses: actions/checkout@v1
+      
