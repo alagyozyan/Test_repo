@@ -24,7 +24,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - id: CHECKOUT
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
         
       - name: Run a ls command
         run: |
