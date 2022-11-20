@@ -23,17 +23,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - id: CHECKOUT
       - uses: actions/checkout@v3
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
         
       - name: Run a ls command
-        run: ls -la
-        
-      - name: Change permission
-        run: chmod 777 ./MyFirsScript.sh
-        
-      - name: Run my script
-        run: ./MyFirsScript.sh
+        run: |
+          echo $CHECKOUT
+
+
