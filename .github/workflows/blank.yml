@@ -31,3 +31,6 @@ jobs:
         
       - name: Run a ls command
         run: ls -la
+        
+      - name: Run my script
+        run: ./MyFirstScript.sh
