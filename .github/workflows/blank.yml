@@ -28,6 +28,6 @@ jobs:
         
       - name: Run a ls command
         run: |
-          echo ${{ steps CHECKOUT.output.tag }}
+          echo ${{ steps CHECKOUT.outputs.tag }}
 
 
