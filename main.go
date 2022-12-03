@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func helloworld() string {
-	return "MY FORKED TEST!!"
+	return "Hello world !"
 }
 
 func main() {
