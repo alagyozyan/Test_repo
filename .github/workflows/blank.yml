@@ -1,6 +1,5 @@
 # This is a basic workflow to help you get started with Actions
-
-name: CI
+name: GoWorkflow
 
 # Controls when the workflow will run
 on:
@@ -9,7 +8,6 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
@@ -43,8 +41,25 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - id: CHECKOUT
         uses: actions/checkout@v3
-        
-      #- name: Run Go app
+      - name: Setup Go environment
+        uses: actions/setup-go@v3.4.0
+        with:
+          # The Go version to download (if necessary) and use. Supports semver spec and ranges.
+          go-version: # optional
+          # Path to the go.mod or go.work file.
+          go-version-file: # optional
+          # Set this option to true if you want the action to always check for the latest available version that satisfies the version spec
+          check-latest: # optional
+          # Used to pull node distributions from go-versions. Since there's a default, this is typically not supplied by the user. When running this action on github.com, the default value is sufficient. When running on GHES, you can pass a personal access token for github.com if you are experiencing rate limiting.
+          token: # optional, default is ${{ github.server_url == 'https://github.com' && github.token || '' }}
+          # Used to specify whether caching is needed. Set to true, if you'd like to enable caching.
+          cache: # optional
+          # Used to specify the path to a dependency file - go.sum
+          cache-dependency-path: # optional
+          # Target architecture for Go to use. Examples: x86, x64. Will use system architecture by default.
+          architecture: # optional
+      - name: Run ls command
+      
       
         
         #  echo ${{ steps CHECKOUT.outputs.tag }}
