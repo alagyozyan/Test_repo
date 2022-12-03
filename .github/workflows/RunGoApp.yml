@@ -12,7 +12,7 @@ on:
       Go_version:
         description: 'Go Version'
         required: true
-        default: GO_VERSION
+        default: ${{ env.GO_VERSION }}
         type: choice
         options:
         - '1.16'
@@ -33,7 +33,7 @@ jobs:
       - name: Set up go
         uses: actions/setup-go@v3
         with:
-          go-version: GO_VERSION
+          go-version: ${{ env.GO_VERSION }}
 
       - name: Build
         run : go build -v ./...
