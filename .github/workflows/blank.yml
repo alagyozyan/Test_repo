@@ -26,8 +26,9 @@ jobs:
       - id: CHECKOUT
         uses: actions/checkout@v3
         
-      #- name: Run a ls command
-       # run: |
+      - name: Run a ls command
+        run: |
+        
         #  echo ${{ steps CHECKOUT.outputs.tag }}
 
 
