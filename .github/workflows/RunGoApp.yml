@@ -1,18 +1,18 @@
 name: RunGoapp
 
+env:
+  GO-VERSION: '1.15'
+
 on:
   push:
     branches: [ "main" ]
     
   workflow_dispatch:
-    env:
-      GO-VERSION: '1.15'
-
     inputs:
       Go_version:
         description: 'Go Version'
         required: true
-        default: $GO_VERSION
+        default: ${{env.GO-VERSION}}
         type: choice
         options:
         - '1.16'
