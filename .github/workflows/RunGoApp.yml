@@ -1,7 +1,7 @@
 name: RunGoapp
 
 env:
-  GO_VERSION: 1.15
+  GO-VERSION: '1.15'
 
 on:
   push:
