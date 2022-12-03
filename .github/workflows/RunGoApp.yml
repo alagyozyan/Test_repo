@@ -1,5 +1,8 @@
 name: RunGoapp
 
+env:
+  GO_VERSION: 1.15
+
 on:
   push:
     branches: [ "main" ]
@@ -7,9 +10,9 @@ on:
   workflow_dispatch:
     inputs:
       Go_version:
-        description: 'Version'
+        description: 'Go Version'
         required: true
-        default: '1.15'
+        default: GO_VERSION
         type: choice
         options:
         - '1.16'
@@ -30,7 +33,7 @@ jobs:
       - name: Set up go
         uses: actions/setup-go@v3
         with:
-          go-version: 1.15
+          go-version: GO_VERSION
 
       - name: Build
         run : go build -v ./...
