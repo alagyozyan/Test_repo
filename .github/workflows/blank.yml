@@ -44,7 +44,7 @@ jobs:
       - id: CHECKOUT
         uses: actions/checkout@v3
         
-      - name: Run Go app
+      #- name: Run Go app
       
         
         #  echo ${{ steps CHECKOUT.outputs.tag }}
