@@ -1,10 +1,9 @@
 name: GoWorkflow
 
-on: 
+on:
   push:
-    branches:
-      - master
-      
+    branches: [ "master" ]
+
 jobs:
   my_testing:
     runs-on: ubuntu-latest
