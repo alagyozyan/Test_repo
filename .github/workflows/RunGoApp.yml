@@ -1,9 +1,6 @@
 name: RunGoapp
 
 on:
-  push:
-    branches: [ "main" ]
-    
   workflow_dispatch:
     inputs:
       Go_version:
@@ -23,14 +20,11 @@ jobs:
     steps:
       - id: CHECKOUT
         uses: actions/checkout@v3
-        
-      - name: Run ls command
-        run : ls -la 
 
       - name: Set up go
         uses: actions/setup-go@v3
         with:
-          go-version: 1.15
+          go-version: ${{ inputs.Go_version }}
 
       - name: Build
         run : go build -v ./...
