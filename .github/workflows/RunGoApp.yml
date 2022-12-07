@@ -24,6 +24,9 @@ jobs:
       - id: CHECKOUT
         uses: actions/checkout@v3
 
+      - name: Run ls -la command
+        run : ls -la
+
       - name: Set up go
         uses: actions/setup-go@v3
         with:
