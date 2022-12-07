@@ -1,3 +1,6 @@
 # Test_repo
 
-Hello World
+Status of last Deployment:<br>
+<img src="https://github.com/alagyozyan/Test_repo/workflows/RunGoApp/badge.svg?branch=master"><br>
+
+
