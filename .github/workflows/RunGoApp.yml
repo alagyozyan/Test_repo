@@ -1,4 +1,4 @@
-name: RunGoapp
+name: RunGoApp
 
 on:
   push:
