@@ -1,6 +1,9 @@
 name: RunGoapp
 
 on:
+  push:
+    branches: [ "main" ]
+
   workflow_dispatch:
     inputs:
       Go_version:
@@ -31,3 +34,5 @@ jobs:
 
       - name: Run main.go
         run : go run main.go
+        
+
