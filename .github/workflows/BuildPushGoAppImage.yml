@@ -1,7 +1,8 @@
 name: BuildPushGoAppImage
 
 env:
-  GO_V: "1.15"
+  GO_V:        "1.15"
+  DOCKER_NAME: "go_app_image"
 
 on:
   workflow_dispatch:
@@ -15,10 +16,10 @@ on:
         - '1.16'
         - '1.14'
         - '1.15'
-      docker_image-name:
+      docker_image_name:
         description: 'Docker Image Name '
         required:    true
-        default: "go_app_image"
+        default:     ${{ env.DOCKER_NAME }}
         type: string
 
   push:
@@ -46,4 +47,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{inputs.docker_image-name}}:${{ env.GO_V }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{inputs.docker_image_name}}:${{ env.GO_V }}
