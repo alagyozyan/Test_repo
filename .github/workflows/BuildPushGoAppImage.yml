@@ -1,12 +1,20 @@
 name: BuildPushGoAppImage
 
+env:
+  GO_V: "1.15"
+
 on:
   workflow_dispatch:
     inputs:
-      tags:
-        description: Some boolean field
-        required: false
-        type: boolean
+      Go_version:
+        description: 'Go Version'
+        required: true
+        default: "1.15"
+        type: choice
+        options:
+        - '1.16'
+        - '1.14'
+        - '1.15'
 
   push:
     branches: [ "main" ]
@@ -26,11 +34,11 @@ jobs:
         
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
-        
+
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{inputs.dockerimage-name}}:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{inputs.dockerimage-name}}:${{ env.GO_V }}
