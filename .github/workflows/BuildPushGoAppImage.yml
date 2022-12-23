@@ -1,7 +1,7 @@
 name: BuildPushGoAppImage
 
 env:
-  GO_V:        "1.15"
+  GO_V:        '1.15'
   DOCKER_NAME: "go_app_image"
 
 on:
@@ -10,7 +10,7 @@ on:
       Go_version:
         description: 'Go Version'
         required:    true
-        default:     ${{ env.GO_V }}''
+        default:     ${{ env.GO_V }}
         type:        choice
         options:
         - '1.16'
