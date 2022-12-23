@@ -8,13 +8,18 @@ on:
     inputs:
       Go_version:
         description: 'Go Version'
-        required: true
-        default: "1.15"
-        type: choice
+        required:    true
+        default:     "1.15"
+        type:        choice
         options:
         - '1.16'
         - '1.14'
         - '1.15'
+      docker_image-name:
+        description: 'Docker Image Name '
+        required:    true
+        default: "go_app_image"
+        type: string
 
   push:
     branches: [ "main" ]
@@ -41,4 +46,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{inputs.dockerimage-name}}:${{ env.GO_V }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{inputs.docker_image-name}}:${{ env.GO_V }}
