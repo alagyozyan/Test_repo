@@ -42,6 +42,6 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          build-args: go_lang_version=${{ env.GO_V }}
+          build-args: go_lang_version=${{ inputs.Go_version }}
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_NAME }}:${{ inputs.Go_version }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_NAME }}
