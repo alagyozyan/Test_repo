@@ -16,11 +16,7 @@ on:
         - '1.16'
         - '1.14'
         - '1.15'
-      docker_image_name:
-        description: 'Docker Image Name '
-        required:    true
-        default:     ${{ env.DOCKER_NAME }}
-        type: string
+
 
   push:
     branches: [ "main" ]
@@ -47,4 +43,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{inputs.docker_image_name}}:${{ env.GO_V }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_NAME }}:${{ env.GO_V }}
