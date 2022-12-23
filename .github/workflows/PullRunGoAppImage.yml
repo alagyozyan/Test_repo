@@ -1,0 +1,29 @@
+name: BuildPushGoAppImage
+
+on:
+  workflow_dispatch:
+    inputs:
+      docker_user_name:
+        description:  'Docker User Name '
+        required:     true
+        default:      'alagyozyan'
+        type:         string
+      docker_image_name:
+        description:  'Docker Image Name '
+        required:     true
+        default:      'go_app_image'
+        type:         string
+
+
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull some image from DockerHub
+        run: docker pull ${{ inputs.docker_user_name }}/${{ inputs.docker_image_name }}
+
+      - name: Run the pulled image
+        run: docker run ${{ inputs.docker_user_name }}/${{ inputs.docker_image_name }}
