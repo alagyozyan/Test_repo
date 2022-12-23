@@ -10,7 +10,7 @@ on:
       Go_version:
         description: 'Go Version'
         required:    true
-        default:     '${{ env.GO_V }}'
+        default:     ${{ env.GO_V }}''
         type:        choice
         options:
         - '1.16'
