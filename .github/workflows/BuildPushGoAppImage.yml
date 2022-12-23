@@ -10,7 +10,7 @@ on:
       Go_version:
         description: 'Go Version'
         required:    true
-        default:     "1.15"
+        default:     ${{ env.GO_V }}
         type:        choice
         options:
         - '1.16'
@@ -44,4 +44,4 @@ jobs:
           file: ./Dockerfile
           build-args: go_lang_version=${{ env.GO_V }}
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_NAME }}:${{ env.GO_V }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_NAME }}:${{ inputs.Go_version }}
