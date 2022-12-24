@@ -3,7 +3,7 @@ name: BuildPushGoAppImage
 env:
   GO_V:               '1.15'
   DOCKER_NAME:        "go_app_image"
-  GIT_HUB_RUN_NUMBER: ${GITHUB_RUN_NUMBER}
+  GIT_HUB_RUN_NUMBER: "${GITHUB_RUN_NUMBER}"
 
 on:
   workflow_dispatch:
