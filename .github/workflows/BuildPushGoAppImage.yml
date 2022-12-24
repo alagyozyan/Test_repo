@@ -48,6 +48,6 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          build-args: go_lang_version=${{ inputs.Go_version }} -t ${{ inputs.docker_image_name }}:${{ GIT_HUB_RUN_NUMBER }}
+          build-args: go_lang_version=${{ inputs.Go_version }} -t ${{ inputs.docker_image_name }}:${{ env.GIT_HUB_RUN_NUMBER }}
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.docker_image_name }}:${{ GIT_HUB_RUN_NUMBER }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.docker_image_name }}:${{ env.GIT_HUB_RUN_NUMBER }}
