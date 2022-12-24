@@ -49,4 +49,4 @@ jobs:
           file: ./Dockerfile
           build-args: go_lang_version=${{ inputs.Go_version }}
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.docker_image-name }}:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.docker_image-name }}:${{ github. run_id }}
