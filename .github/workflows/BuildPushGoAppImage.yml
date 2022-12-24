@@ -1,8 +1,9 @@
 name: BuildPushGoAppImage
 
 env:
-  GO_V:        '1.15'
-  DOCKER_NAME: "go_app_image"
+  GO_V:               '1.15'
+  DOCKER_NAME:        "go_app_image"
+  GIT_HUB_RUN_NUMBER: ${GITHUB_RUN_NUMBER}
 
 on:
   workflow_dispatch:
@@ -16,7 +17,7 @@ on:
         - '1.16'
         - '1.14'
         - '1.15'
-      docker_image-name:
+      docker_image_name:
         description:  'Docker Image Name '
         required:     true
         default:      'go_app_image'
@@ -47,6 +48,6 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          build-args: go_lang_version=${{ inputs.Go_version }} -t ${{ inputs.docker_image-name }}:${ GITHUB_RUN_NUMBER }
+          build-args: go_lang_version=${{ inputs.Go_version }} -t ${{ inputs.docker_image_name }}:${{ GIT_HUB_RUN_NUMBER }}
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.docker_image-name }}:${ GITHUB_RUN_NUMBER }
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.docker_image_name }}:${{ GIT_HUB_RUN_NUMBER }}
