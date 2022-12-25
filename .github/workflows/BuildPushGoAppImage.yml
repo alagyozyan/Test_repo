@@ -19,7 +19,7 @@ on:
       docker_image_name:
         description:  'Docker Image Name '
         required:     true
-        default:      '${{ env.DOCKER_NAME }}'
+        default:      'go_app_image'
         type:         string
 
 
@@ -47,6 +47,6 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          build-args: go_lang_version=${{ inputs.Go_version }} -t ${{ inputs.docker_image_name }}
+          build-args: go_lang_version=${{ inputs.Go_version }} -t ${{ env.DOCKER_NAME }}
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.docker_image_name }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_NAME }}
