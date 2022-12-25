@@ -2,7 +2,7 @@ name: BuildPushGoAppImage
 
 env:
   GO_V:               '1.15'
-  DOCKER_NAME:        "go_app_image:${GITHUB_RUN_NUMBER}"
+  DOCKER_NAME:        "go_app_image"
 
 on:
   workflow_dispatch:
@@ -49,4 +49,4 @@ jobs:
           file: ./Dockerfile
           build-args: go_lang_version=${{ inputs.Go_version }} -t ${{ env.DOCKER_NAME }}
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_NAME }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_NAME }}:${GITHUB_RUN_NUMBER}
