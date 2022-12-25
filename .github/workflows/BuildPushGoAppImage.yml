@@ -3,7 +3,6 @@ name: BuildPushGoAppImage
 env:
   GO_V:               '1.15'
   DOCKER_NAME:        "go_app_image"
-  GITHUB_RUN_NUMBER:  '${GITHUB_RUN_NUMBER}'
 
 on:
   workflow_dispatch:
@@ -29,6 +28,8 @@ on:
 
 jobs:
   build:
+    env:
+      docker_image_name: "${{ inputs.docker_image_name}}:${DOCKERHUB_RUN_NUMBER}" 
     runs-on: ubuntu-latest
     steps:
       - name: Git CheckOut
@@ -46,9 +47,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          run: echo "${GITHUB_RUN_NUMBER}"
           context: .
           file: ./Dockerfile
-          build-args: go_lang_version=${{ inputs.Go_version }} -t ${{ inputs.docker_image_name }}:"${GITHUB_RUN_NUMBER}"
+          build-args: go_lang_version=${{ inputs.Go_version }} -t ${{ inputs.docker_image_name }}
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.docker_image_name }}:"${GITHUB_RUN_NUMBER}"
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.docker_image_name }}
