@@ -29,7 +29,7 @@ on:
 jobs:
   build:
     env:
-      docker_image_name: "${{ inputs.docker_image_name}}:${GITHUB_RUN_NUMBER}" 
+      docker_image_name: ${{ inputs.docker_image_name }}:${GITHUB_RUN_NUMBER}
     runs-on: ubuntu-latest
     steps:
       - name: Git CheckOut
