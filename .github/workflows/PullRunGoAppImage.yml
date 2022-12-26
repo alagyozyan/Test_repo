@@ -13,6 +13,11 @@ on:
         required:     true
         default:      'go_app_image'
         type:         string
+      docker_image_tag:
+        description:  'Docker Image Tag'
+        required:     true
+        default:      'go_app_image'
+        type:         string
 
 
   push:
